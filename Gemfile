@@ -57,3 +57,12 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# cucumber tests
+# according to https://github.com/cucumber/cucumber-rails/blob/master/README.md#installation
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+end
+
