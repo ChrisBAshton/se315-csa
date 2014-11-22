@@ -16,17 +16,23 @@ Then(/^the changes should (be|NOT be) saved$/) do |to_be_or_not_to_be| # that is
 end
 
 def attempt_to_edit (field, value, should_save)
-  # visit the Edit Profile page
+  visit_edit_profile
+  update_field field, value
+  submit_form
+  validate(should_save)
+end
+
+def visit_edit_profile
   $map.clean_slate
   visit $map.get_url_from("Edit Profile (own)")
+end
 
-  # update the field
+def update_field(field, value)
   page.find(field).set(value)
+end
 
-  # submit the form
+def submit_form
   page.find(".edit_user input[name='commit']").click
-
-  validate(should_save)
 end
 
 def validate (should_save)
