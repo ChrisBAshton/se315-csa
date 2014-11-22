@@ -1,23 +1,49 @@
-When(/^I attempt to visit (.+)$/) do |page_description|
+When(/^I edit my profile with a(?:n)? (valid|invalid) (.+)$/) do |valid_or_invalid, field_description|
+  ProfileValidator::prepare(
+    valid_inputs:      valid_or_invalid,
+    field_description: field_description
+  )
+  assert ProfileValidator::field_and_values_are_not_empty
+end
+
+Then(/^the changes should (be|NOT be) saved$/) do |to_be_or_not_to_be| # that is the question
+  should_save = (to_be_or_not_to_be == "be")
+  field = ProfileValidator::get_field
+  values = ProfileValidator::get_values
+  values.each do |value|
+    attempt_to_edit field, value, should_save
+  end
+end
+
+def attempt_to_edit (field, value, should_save)
+  # visit the Edit Profile page
   $map.clean_slate
-  url = $map.get_url_from(page_description)
-  visit url
+  visit $map.get_url_from("Edit Profile (own)")
+
+  # update the field
+  page.find(field).set(value)
+
+  # submit the form
+  page.find(".edit_user input[name='commit']").click
+
+  validate(should_save)
 end
 
-Then(/^I should be redirected to the (.+)$/) do |different_page|
+def validate (should_save)
+  if (should_save)
+    validate_save
+  else
+    validate_did_not_save
+  end
+end
+
+# if successful, will redirect to Profile page
+def validate_save
   uri = URI.parse(current_url)
-  assert_equal uri.path, $map.get_url_from(different_page)
+  assert_equal uri.path, $map.get_url_from("Profile (own)"), "Page didn't save..."
 end
 
-Then(/^I should be blocked from seeing the content$/) do
-    assert failed_to_reach_page, "Should not have reached page"
-end
-
-Then(/^I should successfully see the 'Profile' page$/) do
-  page.assert_selector(".flash_error", :count => 0)
-  page.assert_selector(".content-image, .content-detail", :count => 2)
-end
-
-Then(/^I should successfully see the 'Edit Profile' page$/) do
-  page.assert_selector(".edit_user", :count => 1)
+# if unsuccessful, page won't redirect, error message will be displayed
+def validate_did_not_save
+  assert page.has_selector?("#error_explanation"), "The form data was invalid, but the changes were saved!"
 end
