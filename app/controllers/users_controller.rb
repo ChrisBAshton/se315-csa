@@ -64,8 +64,12 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
-    @user.user_detail = UserDetail.new
+    if is_admin?
+      @user = User.new
+      @user.user_detail = UserDetail.new
+    else
+      indicate_illegal_request I18n.t('users.insufficient-permissions')
+    end
   end
 
   # GET /users/1/edit

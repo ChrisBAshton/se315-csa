@@ -106,7 +106,7 @@ class BroadcastsController < ApplicationController
 
   def squelch_record_not_found(exception)
     respond_to do |format|
-      format.html { redirect_to(broadcasts_url(page: current_page)) }
+      format.html { redirect_to(broadcasts_url(page: @current_page)) }
       format.json { head :no_content }
     end
   end

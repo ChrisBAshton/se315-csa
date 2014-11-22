@@ -1,16 +1,16 @@
-When(/^I attempt to visit (another user's|my own|a non\-existent user's) (.+)$/) do |who, page_description|
-  url = make_url(page_description, get_user_id(who))
+When(/^I attempt to visit (.+)$/) do |page_description|
+  $map.clean_slate
+  url = $map.get_url_from(page_description)
   visit url
 end
 
 Then(/^I should be redirected to the (.+)$/) do |different_page|
   uri = URI.parse(current_url)
-  assert_equal uri.path, make_url(different_page)
+  assert_equal uri.path, $map.get_url_from(different_page)
 end
 
 Then(/^I should be blocked from seeing the content$/) do
-  page.assert_selector(".flash_error", :count => 1)
-  assert page.has_content?("This is not your account, access denied")
+    assert failed_to_reach_page, "Should not have reached page"
 end
 
 Then(/^I should successfully see the 'Profile' page$/) do

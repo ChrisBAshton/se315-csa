@@ -18,46 +18,26 @@ def login_with_credentials (username, password)
 end
 
 def get_user_id (who)
+  id = 0
   case who
   when "my own"
-    $userID
+    id = $userID.nil? ? 7 : $userID
   when "another user's"
-    $userID == 30 ? 31 : 30
+    id = $userID == 30 ? 31 : 30
   when "a non-existent user's"
-    -4
-  else
-    raise "Invalid option! Not sure which user ID to provide."
+    id = -4
   end
+  return id
 end
 
-def make_url (description, user_id = false)
-  if (user_id)
-    return make_url_using_user_id(description, user_id)
-  else
-    return make_url_without_user_id(description)
-  end
+def successfully_reached_page
+  no_error_message = !page.has_selector?(".flash_error")
+  no_login_prompt  = !page.has_content?("Please log in")
+  return no_error_message && no_login_prompt
 end
 
-def make_url_without_user_id (description)
-  url = ""
-  case description
-  when "login screen"
-    url = "/session/new"
-  when "page of users"
-    url = "/users"
-  end
-  return url
-end
-
-def make_url_using_user_id (description, user_id)
-  url = ""
-  case description
-  when "'Profile' page"
-    url = "/users/#{user_id}"
-  when "'Edit Profile' page"
-    url = "/users/#{user_id}/edit"
-  end
-  return url
+def failed_to_reach_page
+  return !successfully_reached_page
 end
 
 def store_page_body (body, index = 0)

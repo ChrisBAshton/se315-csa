@@ -61,6 +61,7 @@ en:
     account-no-exists:      "Account no longer exists"
     account-created:        "Account was successfully created"
     thanks:                 "Thanks for signing up!  We're sending you an email with your activation code"
+    insufficient-permissions: "You don't have sufficient permissions to perform that task"
 
   broadcasts:
     unable-message:         "Unable to broadcast to one or more feeds"
