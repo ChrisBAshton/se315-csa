@@ -57,9 +57,6 @@ class ProfileValidator
     "grad year".to_sym  => [
       "1682",           # too far in the past (before Aberystwyth was even founded!)
       "2020"            # in the future - can't have graduated yet
-    ],
-    "jobs status".to_sym => [
-      "wibble"          # not a boolean
     ]
   }
 
@@ -77,7 +74,7 @@ class ProfileValidator
   end
 
   def self.get_values
-    if (@values_required == "valid")
+    if (@valid_inputs_required)
       return @valid_inputs[@field_to_get_values_for]
     else
       return @invalid_inputs[@field_to_get_values_for]
