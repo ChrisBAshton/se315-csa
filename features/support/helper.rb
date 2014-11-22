@@ -17,16 +17,47 @@ def login_with_credentials (username, password)
   end
 end
 
-def get_url_from_page_description (description)
+def get_user_id (who)
+  case who
+  when "my own"
+    $userID
+  when "another user's"
+    $userID == 30 ? 31 : 30
+  when "a non-existent user's"
+    -4
+  else
+    raise "Invalid option! Not sure which user ID to provide."
+  end
+end
+
+def make_url (description, user_id = false)
+  if (user_id)
+    return make_url_using_user_id(description, user_id)
+  else
+    return make_url_without_user_id(description)
+  end
+end
+
+def make_url_without_user_id (description)
+  url = ""
   case description
   when "login screen"
-    expected_url = "/session/new"
+    url = "/session/new"
   when "page of users"
-    expected_url = "/users"
-  else
-    expected_url = ""
+    url = "/users"
   end
-  return expected_url
+  return url
+end
+
+def make_url_using_user_id (description, user_id)
+  url = ""
+  case description
+  when "'Profile' page"
+    url = "/users/#{user_id}"
+  when "'Edit Profile' page"
+    url = "/users/#{user_id}/edit"
+  end
+  return url
 end
 
 def store_page_body (body, index = 0)
