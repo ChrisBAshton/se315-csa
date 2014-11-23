@@ -1,16 +1,23 @@
+$field_to_test  # global
+$inputs_to_test # global
+
 When(/^I edit my profile with a(?:n)? (valid|invalid) (.+)$/) do |valid_or_invalid, field_description|
-  ProfileValidator::prepare(
-    valid_inputs:      valid_or_invalid,
-    field_description: field_description
+  
+  validity = (valid_or_invalid == "valid")
+
+  $inputs_to_test = ProfileValidator::get_field_values(
+    field: field_description,
+    valid: validity
   )
-  assert ProfileValidator::field_and_values_are_not_empty
+
+  $field_to_test = ProfileValidator::convert_field_to_symbol field_description
 end
 
 Then(/^the changes should (be|NOT be) saved$/) do |to_be_or_not_to_be| # that is the question
   should_save = (to_be_or_not_to_be == "be")
-  field = ProfileValidator::get_field
-  values = ProfileValidator::get_values
-  values.each do |value|
+  field = $field_to_test
+  $inputs_to_test.each do |value|
+    puts value.to_s
     attempt_to_edit field, value, should_save
   end
 end
@@ -28,7 +35,15 @@ def visit_edit_profile
 end
 
 def update_field(field, value)
-  page.find(field).set(value)
+  html_elements = {
+    firstname:  "#user_firstname",
+    surname:    "#user_surname",
+    email:      "#user_email",
+    phone:      "#user_phone",
+    grad_year:  "#user_grad_year",
+    jobs:       "#user_jobs"
+  }
+  page.find(html_elements[field]).set(value)
 end
 
 def submit_form

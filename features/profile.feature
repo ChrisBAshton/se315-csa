@@ -29,5 +29,5 @@ Feature: Editing a user's profile
       | email             |
       | phone             |
       | grad year         |
-      #| profile picture   |
       # no "jobs status" as we cannot assign an invalid value to a checkbox
+      #| profile picture   |

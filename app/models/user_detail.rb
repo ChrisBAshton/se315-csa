@@ -2,6 +2,7 @@ require 'digest/sha2'
 class UserDetail < ActiveRecord::Base
   validates_presence_of :login
   validates_presence_of :password
+  validates :password, confirmation: true
   validates_uniqueness_of :login, within: 3..40
 
   validates_confirmation_of :password, on: :save
