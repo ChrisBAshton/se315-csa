@@ -26,14 +26,14 @@ Feature: Broadcasts
 
     Examples:
       | feed_type        |
-      | all feeds        |
-      | the Twitter feed |
+      #| all feeds        |
+      #| the Twitter feed |
       | the email feed   |
 
-  Scenario: Sending a broadcast to no feeds
-    When I attempt to visit New broadcast
-    When I attempt to send a broadcast to no feeds
-    Then the broadcast should not send
+  # Scenario: Sending a broadcast to no feeds
+  #   When I attempt to visit New broadcast
+  #   When I attempt to send a broadcast to no feeds
+  #   Then the broadcast should not send
 
   Scenario: Sending a long broadcast to the Twitter feed
     When I attempt to visit New broadcast

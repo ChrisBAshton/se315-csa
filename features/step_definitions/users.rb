@@ -38,18 +38,35 @@ Then(/^I should see an error$/) do
   end
 end
 
+When(/^I attempt to delete an existing user$/) do
+  visit "/users"
+  assert page.has_content?($user_to_delete[:email])
+  delete_link = page.find("table tbody a[data-method='delete'][href='/users/#{$user_to_delete[:id]}?page=1']")
+  delete_link.click
+end
+
+Then(/^I should succeed in deleting that user$/) do
+  assert !page.has_content?($user_to_delete[:email])
+end
+
 def enter_inputs(inputs)
-  page.find("#user_firstname").set(inputs[:firstname])
-  page.find("#user_surname").set(inputs[:surname])
-  page.find("#user_grad_year").set(inputs[:grad_year])
-  page.find("#user_phone").set(inputs[:phone])
-  if inputs[:jobs]
-    page.find("#user_jobs").click
-  end
-  page.find("#user_email").set(inputs[:email])
-  page.find("#user_user_detail_attributes_login").set(inputs[:login])
-  page.find("#user_user_detail_attributes_password").set(inputs[:password])
+  fill_in('First name', :with => inputs[:firstname])
+  fill_in('Surname',    :with => inputs[:surname])
+  fill_in('Phone',      :with => inputs[:phone])
+  fill_in('Grad. year', :with => inputs[:grad_year])
+  fill_in('Email',      :with => inputs[:email])
+  fill_in('Login',      :with => inputs[:login])
+  fill_in('Password',   :with => inputs[:password])
+
+  # special cases. "Confirm password" label doesn't link to the corresponding input field
   page.find("#user_user_detail_attributes_password_confirmation").set(inputs[:password_conf])
+
+  # checkbox doesn't have a value as such
+  if inputs[:jobs]
+    check 'Jobs'
+  else
+    uncheck 'Jobs'
+  end
 end
 
 def assert_redirected_to_user_profile
@@ -62,15 +79,4 @@ end
 # http://stackoverflow.com/a/4589982
 def is_numeric?(obj) 
    obj.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
-end
-
-When(/^I attempt to delete an existing user$/) do
-  visit "/users"
-  assert page.has_content?($user_to_delete[:email])
-  delete_link = page.find("table tbody a[data-method='delete'][href='/users/#{$user_to_delete[:id]}?page=1']")
-  delete_link.click
-end
-
-Then(/^I should succeed in deleting that user$/) do
-  assert !page.has_content?($user_to_delete[:email])
 end
