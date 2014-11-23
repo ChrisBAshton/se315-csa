@@ -39,4 +39,33 @@ Csa::Application.configure do
   # [deprecated] I18n.enforce_available_locales will default to true in the future. If you really want to skip validation of your locale you can set I18n.enforce_available_locales = false to avoid this message.
   I18n.enforce_available_locales = true
   
+  # These settings work for staff over exchange outside
+  # of network
+  #config.action_mailer.smtp_settings = {
+  #address: "smtphost.aber.ac.uk",
+  #port: 587,
+  #user_name: 'cwl',
+  #password: '******', # Put password here, although rather dangerous
+  #authentication: :login,
+  #enable_starttls_auto: true
+  #}
+
+  # This should work within the network
+  config.action_mailer.smtp_settings = {
+      address: "smtphost.aber.ac.uk",
+      port: 25
+  }
+
+  ADMIN_EMAIL="admin@host.ac.com" # Change to your email
+
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+  # number of complex assets.
+  config.assets.debug = true
+  Paperclip.options[:command_path] = '/usr/local/bin/'
+
+  #config.use_ssl = true
+  config.use_ssl = false
+  config.ssl_port = 3001
+  NON_SSL_PORT = 3000
 end

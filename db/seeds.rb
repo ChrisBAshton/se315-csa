@@ -28,9 +28,36 @@ User.transaction do
                      user: user)
 
   # Create some dummy feeds
-  Feed.create!(name: 'twitter')
-  Feed.create!(name: 'facebook')
-  Feed.create!(name: 'email')
-  Feed.create!(name: 'RSS')
-  Feed.create!(name: 'atom')
+  feed_twitter  = Feed.create!(name: 'twitter')
+  feed_facebook = Feed.create!(name: 'facebook')
+  feed_email    = Feed.create!(name: 'email')
+  feed_rss      = Feed.create!(name: 'RSS')
+  feed_atom     = Feed.create!(name: 'atom')
+
+  # id 1
+  Broadcast.create!(user_id: user,
+                    content: "Hello, World!",
+                    feeds: [feed_twitter, feed_email])
+  # id 2
+  Broadcast.create!(user_id: user,
+                    content: "Hello, World... again!",
+                    feeds: [feed_twitter, feed_email])
+  # id 3
+  Broadcast.create!(user_id: user,
+                    content: "I'm going to be deleted!",
+                    feeds: [feed_twitter])
+  # id 4
+  Broadcast.create!(user_id: user,
+                    content: "Hello, World... yet again.",
+                    feeds: [feed_email])
+  # id 5
+  Broadcast.create!(user_id: user,
+                    content: "Hello, World... again and again and again!",
+                    feeds: [feed_facebook])
+  # and thereafter
+  1..5.times do 
+    Broadcast.create!(user_id: user,
+                      content: "copy_and_paste_me",
+                      feeds: [feed_email])
+  end
 end

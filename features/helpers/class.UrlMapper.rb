@@ -12,8 +12,8 @@ class UrlMapper
       "Edit Profile (non-existent user)" => "/users/" + get_user_id_string("non-existent user's") + "/edit",
       "Users list" => "/users",
       "New user" => "/users/new",
-      "Broadcasts list" => "/broadcasts",
-      "Specific broadcast" => "/broadcasts/4",
+      "the broadcasts list" => "/broadcasts",
+      "a specific broadcast" => "/broadcasts/4",
       "New broadcast" => "/broadcasts/new"
     }
     @pages_accessed = []
