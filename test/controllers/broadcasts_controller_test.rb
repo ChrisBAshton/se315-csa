@@ -1,8 +1,11 @@
 require 'test_helper'
+require_relative 'helper'
 
 class BroadcastsControllerTest < ActionController::TestCase
   setup do
     @broadcast = broadcasts(:one)
+    @user = users(:one)
+    make_admin_session @user
   end
 
   test "should get index" do
@@ -18,7 +21,7 @@ class BroadcastsControllerTest < ActionController::TestCase
 
   test "should create broadcast" do
     assert_difference('Broadcast.count') do
-      post :create, broadcast: { content: @broadcast.content, user_id: @broadcast.user_id }
+      post :create, broadcast: { content: @broadcast.content, user_id: @broadcast.user_id }, feeds: {"email" => "1"}
     end
 
     assert_redirected_to broadcast_path(assigns(:broadcast))

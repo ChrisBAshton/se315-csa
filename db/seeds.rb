@@ -30,14 +30,10 @@
 
     #username = user_config['email'][/[^@]+/]
     
-    # UserDetail.create!(login:    'admin',
-    #                    password: 'taliesin',
-    #                    user:     $user)  
+    UserDetail.create!(login:    'admin',
+                       password: 'taliesin',
+                       user:     $user)
   end
-
-  user_details = YAML::load_file(File.dirname(__FILE__) + "/../test/fixtures/user_details.yml")
-
-  UserDetail.create(user_details)
 
   # Create some dummy feeds
   feed_twitter  = Feed.create!(name: 'twitter')

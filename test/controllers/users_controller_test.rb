@@ -1,13 +1,10 @@
 require 'test_helper'
+require_relative 'helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
-    # salt:               21613652800.8890977334258171
-    # encrypted password: ced6c1da3e5436a7816d428910172927e0ac0fbaeb0b7454fb0a0372dceb3502
-    @user.user_detail = UserDetail.authenticate('admin', 'taliesin')
-    puts @user.user_detail  
-    session[:user_id] = @user.user_detail
+    make_admin_session @user
   end
 
   test "should get index" do

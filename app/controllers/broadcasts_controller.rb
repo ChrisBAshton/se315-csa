@@ -32,9 +32,11 @@ class BroadcastsController < ApplicationController
   def create
 
     at_least_one_valid_feed = false
-    params[:feeds].each do |feed_name, feed_value|
-      if feed_name != 'alumni_email'
-        at_least_one_valid_feed = true
+    if params[:feeds]
+      params[:feeds].each do |feed_name, feed_value|
+        if feed_name != 'alumni_email'
+          at_least_one_valid_feed = true
+        end
       end
     end
 
@@ -72,7 +74,7 @@ class BroadcastsController < ApplicationController
             no_errors = true
           end
           if no_errors
-            format.html { redirect_to(broadcasts_url(page: @current_page)) }
+            format.html { redirect_to(broadcast_path(@broadcast)) }
             format.json { render json: @broadcast, status: :created, location: @broadcast }
           else
             format.html { render :new }
