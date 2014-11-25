@@ -10,10 +10,11 @@ class UrlMapper
       "Edit Profile (own)" => "/users/" + get_user_id_string("my own") + "/edit",
       "Edit Profile (others)" => "/users/" + get_user_id_string("another user's") + "/edit",
       "Edit Profile (non-existent user)" => "/users/" + get_user_id_string("non-existent user's") + "/edit",
-      "Users list" => "/users",
+      "the Users list" => "/users",
       "New user" => "/users/new",
       "the broadcasts list" => "/broadcasts",
       "a specific broadcast" => "/broadcasts/4",
+      "a broadcast that doesn't exist" => "/broadcasts/-6",
       "New broadcast" => "/broadcasts/new"
     }
     @pages_accessed = []

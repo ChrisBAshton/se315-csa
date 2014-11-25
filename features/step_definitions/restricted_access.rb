@@ -28,7 +28,7 @@ When(/^I attempt to visit (.+)$/) do |page_description|
   visit url
 end
 
-Then(/^I should be redirected to the (.+)$/) do |different_page|
+Then(/^I should be redirected to (.+)$/) do |different_page|
   uri = URI.parse(current_url)
   assert_equal uri.path, $map.get_url_from(different_page)
 end

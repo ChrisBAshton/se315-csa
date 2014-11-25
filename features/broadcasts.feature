@@ -14,6 +14,10 @@ Feature: Broadcasts
     When I attempt to visit a specific broadcast
     Then I should see the broadcast history
 
+  Scenario: Viewing a broadcast that doesn't exist
+    When I attempt to visit a broadcast that doesn't exist
+    Then I should be redirected to the broadcasts list
+
   Scenario: Deleting history of a specific broadcast
     When I attempt to visit the broadcasts list
     And I attempt to delete the history of a specific broadcast

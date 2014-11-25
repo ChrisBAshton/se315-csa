@@ -7,7 +7,7 @@ Feature: Users
     Given I am an admin
 
   Scenario: List of users
-    When I attempt to visit Users list
+    When I attempt to visit the Users list
     Then I should see a list of users
 
   Scenario: Adding a new user with valid inputs
