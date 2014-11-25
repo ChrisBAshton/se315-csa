@@ -31,49 +31,61 @@ class BroadcastsController < ApplicationController
   # POST /broadcasts.json
   def create
 
-    @broadcast = Broadcast.new(broadcast_params)
+    at_least_one_valid_feed = false
+    params[:feeds].each do |feed_name, feed_value|
+      if feed_name != 'alumni_email'
+        at_least_one_valid_feed = true
+      end
+    end
 
-    # Wire up broadcast with the current user (an administrator)
-    # Will be an admin user (see before_filter)
-    # Note the current_user is a user_detail object so we need
-    # to navigate to its user object
-    @broadcast.user = current_user.user
+    if !at_least_one_valid_feed
+      indicate_illegal_request I18n.t('broadcasts.no-feeds-selected')
+    else
 
-    # Doing the next line forces a save automatically. I want to defer this
-    # until the "if" statement
-    #current_user.user.broadcasts << @broadcast
+      @broadcast = Broadcast.new(broadcast_params)
 
-    no_errors = false
-    respond_to do |format|
-      if @broadcast.save
+      # Wire up broadcast with the current user (an administrator)
+      # Will be an admin user (see before_filter)
+      # Note the current_user is a user_detail object so we need
+      # to navigate to its user object
+      @broadcast.user = current_user.user
 
-        # Only after saving do we try and do the real broadcast. Could have been
-        # done using an observer, but I wanted this to be more explicit
+      # Doing the next line forces a save automatically. I want to defer this
+      # until the "if" statement
+      #current_user.user.broadcasts << @broadcast
 
-        results = BroadcastService.broadcast(@broadcast, params[:feeds])
-        if results.length > 0
-          # Something went wrong when trying to broadcast to one or more of the
-          # feeds.
-          @broadcast.errors[:base] << ("#{I18n.t('broadcasts.unable-message')}: #{results.inspect}")
-          flash[:error] = I18n.t('broadcasts.saved-but-message')
-        else
-          flash[:notice] = I18n.t('broadcasts.saved-message')
-          no_errors = true
-        end
-        if no_errors
-          format.html { redirect_to(broadcasts_url(page: @current_page)) }
-          format.json { render json: @broadcast, status: :created, location: @broadcast }
-        else
-          format.html { render :new }
-          format.xml {
-            # Either say it partly worked but send back the errors or else send
-            # back complete failure indicator (couldn't even save)
-            if results
-              render json: @broadcast.errors, status: :created, location: @broadcast
-            else
-              render json: @broadcast.errors, status: :unprocessable_entity
-            end
-          }
+      no_errors = false
+      respond_to do |format|
+        if @broadcast.save
+
+          # Only after saving do we try and do the real broadcast. Could have been
+          # done using an observer, but I wanted this to be more explicit
+
+          results = BroadcastService.broadcast(@broadcast, params[:feeds])
+          if results.length > 0
+            # Something went wrong when trying to broadcast to one or more of the
+            # feeds.
+            @broadcast.errors[:base] << ("#{I18n.t('broadcasts.unable-message')}: #{results.inspect}")
+            flash[:error] = I18n.t('broadcasts.saved-but-message')
+          else
+            flash[:notice] = I18n.t('broadcasts.saved-message')
+            no_errors = true
+          end
+          if no_errors
+            format.html { redirect_to(broadcasts_url(page: @current_page)) }
+            format.json { render json: @broadcast, status: :created, location: @broadcast }
+          else
+            format.html { render :new }
+            format.xml {
+              # Either say it partly worked but send back the errors or else send
+              # back complete failure indicator (couldn't even save)
+              if results
+                render json: @broadcast.errors, status: :created, location: @broadcast
+              else
+                render json: @broadcast.errors, status: :unprocessable_entity
+              end
+            }
+          end
         end
       end
     end
@@ -90,6 +102,21 @@ class BroadcastsController < ApplicationController
   end
 
   private
+
+  # copied from users_controller.rb
+  def indicate_illegal_request(message)
+    respond_to do |format|
+      format.html {
+        flash[:error] = message
+        redirect_back_or_default(home_url)
+      }
+      format.json {
+        render json: "{#{message}}",
+               status: :unprocessable_entity
+      }
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_broadcast
     @broadcast = Broadcast.find(params[:id])

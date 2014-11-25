@@ -67,6 +67,7 @@ en:
     unable-message:         "Unable to broadcast to one or more feeds"
     saved-but-message:      "Broadcast was successfully saved, but problems broadcasting to one or more feeds"
     saved-message:          "Broadcast was successfully saved and broadcast to all feeds"
+    no-feeds-selected:      "You must select at least one feed to broadcast to!"
 
     
 

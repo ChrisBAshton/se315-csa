@@ -22,8 +22,8 @@ end
 When(/^I attempt to send (a|a long) broadcast to (.+)$/) do |length_of_message, feeds|
   long_message = (length_of_message == "a long")
   write_message(long_message)
-  boxes = calculate_which_boxes_to_check feeds
-  check_the boxes
+  check_boxes_corresponding_to feeds
+  send_to_mailing_list 'jobs'
   click_button 'Broadcast'
 end
 
@@ -32,9 +32,28 @@ Then(/^the broadcast should be sent successfully$/) do
   assert message.has_content?("Broadcast was successfully saved and broadcast to all feeds")
 end
 
-Then(/^the broadcast should not send$/) do
+Then(/^the broadcast should not send at all$/) do
+  message = page.find(".flash_error .flash_message")
+  assert message.has_content?("You must select at least one feed to broadcast to!")
+end
+
+Then(/^the broadcast should not send to all feeds$/) do
   message = page.find(".flash_error .flash_message")
   assert message.has_content?("Broadcast was successfully saved, but problems broadcasting to one or more feeds")
+end
+
+def check_boxes_corresponding_to (feeds)
+  boxes = calculate_which_boxes_to_check feeds
+  check_the boxes
+end
+
+def send_to_mailing_list (list)
+  if list == 'jobs'
+    selector = 'feeds_alumni_email_cs-alumni-jobs'
+  else
+    selector = 'feeds_alumni_email_cs-alumni' # News
+  end
+  page.choose(selector)
 end
 
 def check_the (boxes)
@@ -85,6 +104,10 @@ def write_message(long)
   else
     message = "Hello world"
   end
+
+  timestamp = Time.now.getutc.to_s
+
+  message = message + " (Message broadcast at " + timestamp + ")"
 
   page.find('#broadcast_content').set(message)
 end
