@@ -5,6 +5,7 @@ require 'database_cleaner'
 Before do
   DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.start
+  DatabaseCleaner.clean
   load Rails.root.join('db/seeds.rb')
 end
 

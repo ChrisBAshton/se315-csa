@@ -6,3 +6,10 @@ one:
   jobs:      false
   email:     cwl@aber.ac.uk
 
+# admin:
+#   surname:   Ashton
+#   firstname: Christopher
+#   phone:     
+#   grad_year: 2002
+#   jobs:      true
+#   email:     admin@aber.ac.uk
