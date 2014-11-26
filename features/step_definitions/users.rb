@@ -51,23 +51,62 @@ end
 
 Given(/^I have JavaScript (enabled|disabled)$/) do |javascript|
   if javascript == "enabled"
-    puts "JS :)"
+    $js = true
+    $results_container_selector = ".ui-autocomplete"
   else
-    puts "NO JS :("
+    $js = false
+    $results_container_selector = ".main-input-area table.sortable"
   end
 end
 
 And(/^I search for users$/) do
   page.find('#q').set('cwl31')
+  $search_box_selector = '#q'
 end
 
-Then(/^the I should see the results (automatically|after submitting my query)$/) do |retrieve|
-  if retrieve == "automatically"
-    selector = ".ui-autocomplete"
-  else
-    click_button I18n.t('users.search')
-    selector = ".main-input-area table.sortable"
+Then(/^the I should see the results$/) do
+  searches = [
+    {
+      term:             "cwl1",
+      boxes:            ['firstname', 'surname', 'grad_year', 'phone', 'email'],
+      expected_results: ['cwl1', 'cwl10', 'cwl11', 'cwl12', 'cwl13', 'cwl14', 'cwl15', 'cwl16', 'cwl17', 'cwl18', 'cwl19']
+    },
+    {
+      term:             "cwl12",
+      boxes:            ['firstname', 'surname', 'grad_year', 'phone', 'email'],
+      expected_results: ['cwl12']
+    },
+    {
+      term:             "Loftus",
+      boxes:            ['surname'],
+      expected_results: ['cwl']
+    }
+  ]
+
+  searches.each do |search|
+    visit "/users"
+
+    page.find($search_box_selector).set(search[:term])
+    set_boxes search[:boxes]
+
+    if !$js
+      click_button I18n.t('users.search')
+      search[:expected_results] = search[:expected_results].first(User::per_page)
+    end
+
+    results = page.find($results_container_selector)
+    search[:expected_results].each do |result|
+      assert results.has_content?(result)
+    end
   end
+end
+
+def set_boxes(boxes)
+  page.find('#firstname').set(boxes.include? 'firstname')
+  page.find('#surname').set(boxes.include? 'surname')
+  page.find('#grad_year').set(boxes.include? 'grad_year')
+  page.find('#phone').set(boxes.include? 'phone')
+  page.find('#email').set(boxes.include? 'email')
 end
 
 def enter_inputs(inputs)
