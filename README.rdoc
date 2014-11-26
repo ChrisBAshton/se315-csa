@@ -1,3 +1,5 @@
+[![Build Status](https://magnum.travis-ci.com/ChrisBAshton/se315-csa.svg?token=HSfkP4Tffj4JT2ugyno9&branch=master)](https://magnum.travis-ci.com/ChrisBAshton/se315-csa)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,8 +24,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-CODECOV_TOKEN=4d2c59d8-d7a0-4f30-aae0-4357dac3b199
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
