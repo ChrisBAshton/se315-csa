@@ -1,5 +1,5 @@
-MIN_CODE_COVERAGE = 60
-require_relative '../config/code_cov'
+# MONITOR CODE COVERAGE
+require 'simplecov'
 
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)

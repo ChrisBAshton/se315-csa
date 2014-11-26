@@ -1,6 +1,5 @@
 # MONITOR CODE COVERAGE
-MIN_CODE_COVERAGE = 80
-require_relative '../../config/code_cov'
+require 'simplecov'
 
 # CLEAN DATABASE IN BETWEEN SCENARIOS
 require 'database_cleaner'
