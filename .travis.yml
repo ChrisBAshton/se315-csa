@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+  - 2.1.3
+env:
+  - DB=sqlite
+script:
+  - bundle exec rake
+  - mkdir cov
+  - rake test:units
+  - mkdir cov/units
+  - mv coverage cov/units
+  - rake test:functionals
+  - mkdir cov/functionals
+  - mv coverage cov/functionals
+  - cucumber features/
+  - mkdir cov/features
+  - mv coverage cov/features
