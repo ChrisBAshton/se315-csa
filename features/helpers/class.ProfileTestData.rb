@@ -9,7 +9,8 @@ class ProfileTestData
       jobs:          false,
       login:         "cba1",
       password:      "test",
-      password_conf: "test"
+      password_conf: "test",
+      picture:       false
   }
 
   @valid_users = [
@@ -33,6 +34,10 @@ class ProfileTestData
       login:         "abc123",
       password:      "secret",
       password_conf: "secret"
+    },
+
+    {
+      picture: "test/assets/images/profile.jpg"
     }
   ]
 
@@ -77,6 +82,9 @@ class ProfileTestData
     },
     {
       phone: "+447843281733" # valid in some applications, but we've made a business decision that ours should disclude such phone numbers for the sake of data integrity
+    },
+    {
+      picture: "test/assets/images/virus.exe"
     }
   ]
 

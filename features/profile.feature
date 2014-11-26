@@ -15,7 +15,7 @@ Feature: Editing a user's profile
       | phone             |
       | grad year         |
       | jobs status       |
-      #| profile picture   |
+      | profile picture   |
 
   Scenario Outline: User attempts to update a field with an invalid value
     Given I am a user

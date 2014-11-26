@@ -2,12 +2,13 @@ class ProfileValidator
 
   def self.convert_field_to_symbol(field_description)
     symbols = {
-      "first name"  => :firstname,
-      "surname"     => :surname,
-      "email"       => :email,
-      "phone"       => :phone,
-      "grad year"   => :grad_year,
-      "jobs status" => :jobs
+      "first name"      => :firstname,
+      "surname"         => :surname,
+      "email"           => :email,
+      "phone"           => :phone,
+      "grad year"       => :grad_year,
+      "jobs status"     => :jobs,
+      "profile picture" => :picture
     }
     symbols[field_description]
   end

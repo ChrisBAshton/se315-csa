@@ -43,7 +43,14 @@ def update_field(field, value)
     grad_year:  "#user_grad_year",
     jobs:       "#user_jobs"
   }
-  page.find(html_elements[field]).set(value)
+
+  if (field == :picture)
+    if value
+      attach_file('image_file', File.expand_path(value))
+    end
+  else
+    page.find(html_elements[field]).set(value)
+  end
 end
 
 def submit_form
