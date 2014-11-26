@@ -67,6 +67,7 @@ group :test do
 end
 gem 'capybara'
 gem 'selenium-webdriver'
+gem 'poltergeist'
 
 # check code coverage
 gem 'codecov', :require => false, :group => :test

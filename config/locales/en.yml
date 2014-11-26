@@ -1,4 +1,9 @@
 en:
+
+  misc:
+    or:                     "or"
+    errors:                 "errors"
+
   are-you-sure:             "Are you sure?"
   back:                     "Back"
   destroy:                  "Destroy"
@@ -20,9 +25,17 @@ en:
   update:                   "Update"
   please-wait:              "Please wait"
   create:                   "Create"
-  
+
   layout:
     title:                  "CS Alumni - Version 0.1"
+
+  menu:
+    home:                   "Home"
+    jobs:                   "Jobs"
+
+  home:
+    title:                  "Welcome to CS-Alumni News"
+    intro:                  "This is where the home page text will go"
 
   sessions:
     welcome-guest:          "Welcome Guest"
@@ -50,6 +63,7 @@ en:
     must-be-admin:          "You must be an admin to do that"
 
   users:
+    new:                    "New User"
     editing-account:        "Editing account"
     we-accept:              "We accept JPEG, GIF, or PNG files up to 500 KB"
     accounts:               "User accounts"
@@ -69,10 +83,3 @@ en:
     saved-but-message:      "Broadcast was successfully saved, but problems broadcasting to one or more feeds"
     saved-message:          "Broadcast was successfully saved and broadcast to all feeds"
     no-feeds-selected:      "You must select at least one feed to broadcast to!"
-
-    
-
- 
-    
-    
-  

@@ -1,5 +1,85 @@
 cw:
+
+  misc:
+    or:                     "neu"
+    errors:                 "gwallau"
+
+  are-you-sure:             "Wyt ti'n swir?"
+  back:                     "Yn ôl"
+  destroy:                  "Dinistrio"
+  destroy-item:             "Dinistrio eitem"
+  edit:                     "Golygu"
+  edit-item:                "Golygu eitem"
+  close:                    "Agos"
+  show:                     "Dangos"
+  show-details:             "Dangos manylion"
+  email:                    "E-bost"
+  phone:                    "Ffon"
+  grad-year:                "Blwyddyn graddio"
+  jobs:                     "Swyddi"
+  account-state:            "Proffil gyflwr"
+  surname:                  "Cyfenw"
+  firstname:                "Enw cyntaf"
+  state:                    "Wladwriaeth"
+  image:                    "Delwedd"
+  update:                   "Diweddaru"
+  please-wait:              "Aroswch os gwelwch yn dda"
+  create:                   "Creu"
+
   layout:
-    title:       "CS Alumni - Version 0.1"
-    
-  
+    title:                  "CS Alumni - Fersiwn 0.1"
+
+  menu:
+    home:                   "Cartref"
+    jobs:                   "Swyddi"
+
+  home:
+    title:                  "Croeso i Newyddion CS-Alumni"
+    intro:                  "Dyma lle bydd y testun dudalen gartref mynd"
+
+  sessions:
+    welcome-guest:          "Croeso Gwestai"
+    forgot-password:        "Anghofio cyfrinair?"
+    register:               "Gofrestru"
+    welcome:                "Croeso"
+    login:                  "Mewngofnodi"
+    logout:                 "Allgofnodi"
+    password:               "Cyfrinair"
+    remember:               "Cofiwch fi"
+    login-success:          "Mewngofnodi yn llwyddiannus"
+    logout-success:         "Ydych wedi bod yn logio allan"
+    login-failure:          "Ni allech fewngofnodi fel"
+    change-password:        "Newid cyfrinair"
+    old-password:           "Cyfrinair hen"
+    new-password:           "Cyfrinair newydd"
+    password-size:          "Rhwng 4 a 40 cymeriadau"
+    new-password-confirm:   "Cadarnhau cyfrinair newydd"
+    password-confirm:       "Cadarnhau cyfrinair"
+    password-reset:         "Cais Ailosod Cyfrinair"
+    password-reset-message: "Rhowch eich cyfeiriad e-bost sydd gennym ar ein ffeil a chliciwch anfon. Byddwn yn anfon e-bost cyswllt ailosod cyfrinair i chi at eich cyfeiriad e-bost."
+    email-address:          "Cyferiad e-bost"
+    send:                   "Anfon"
+    reset-password:         "ailosod cyfrinair"
+    must-be-admin:          "Rhaid i chi fod yn admin i wneud hynny"
+
+  users:
+    new:                    "Defnyddwyr newydd"
+    editing-account:        "Cyfrif golygu"
+    we-accept:              "Rydym yn derbyn JPEG, GIF, PNG neu ffeiliau hyd at 500 KB"
+    accounts:               "Cyfrifon defnyddwyr"
+    search-accounts:        "Chwilio defnyddwyr"
+    search:                 "Chwilio"
+    search-instruction:     "Rhowch chwilio ymadrodd, neu gadewch yn wag i adfer yr holl gofnodion"
+    sign-up:                "Cofrestrwch fel defnyddiwr newydd"
+    not-your-account:       "Mae hyn yn nid yw eich cyfrif, mynediad gwadu"
+    account-no-exists:      "Cyfrif yn bodoli mwyach"
+    account-created:        "Cyfrif ei greu yn llwyddiannus"
+    thanks:                 "Diolch am ymuno! Rydym yn anfon e-bost i chi gyda eich cod activation"
+    insufficient-permissions: "Nid oes rhaid i chi ddigon o ganiatadau i berfformio dasg honno"
+    invalid-image:          "Nid yw llun proffil dilys. Rhowch gynnig ar fformat ffeil gwahanol."
+
+  broadcasts:
+    unable-message:         "Methu ddarlledu i un neu fwy o feeds"
+    saved-but-message:      "Roedd Darlledu ei arbed yn llwyddiannus, ond mae problemau darlledu i un neu fwy porthiannau"
+    saved-message:          "Roedd Darlledu harbed a darlledu i bob porthiant yn llwyddiannus"
+    no-feeds-selected:      "Rhaid i chi ddewis o leiaf un porthiant i ddarlledu i!"
