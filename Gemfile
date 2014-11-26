@@ -65,6 +65,8 @@ group :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
 end
-
 gem 'capybara'
 gem 'selenium-webdriver'
+
+# check code coverage
+gem 'codecov', :require => false, :group => :test

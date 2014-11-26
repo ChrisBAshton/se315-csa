@@ -23,6 +23,12 @@ Things you may want to cover:
 
 * ...
 
+CODECOV_TOKEN=4d2c59d8-d7a0-4f30-aae0-4357dac3b199
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+CODE COVERAGE
+SESSION OPTIMISER (INSTEAD OF LOGGING IN MANUALLY IN EACH STEP)
+JASMINE TESTS
+TRAVIS CI

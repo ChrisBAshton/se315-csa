@@ -1,3 +1,15 @@
+# MONITOR CODE COVERAGE
+require 'simplecov'
+SimpleCov.start do
+  add_filter File.expand_path('features/')
+end
+
+if ENV['CI']=='true'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
+# CLEAN DATABASE IN BETWEEN SCENARIOS
 require 'database_cleaner'
 
 # Credit mostly to Helen Harman:
