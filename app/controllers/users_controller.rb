@@ -172,7 +172,7 @@ class UsersController < ApplicationController
     fields = []
     table.search_columns.each do |column|
       # The parameters have had the table name stripped off so we
-      # have to to the same to each search_columns column
+      # have to do the same to each search_columns column
       fields << column if params[column.sub(/^.*\./, "")]
     end
     fields = nil unless fields.length > 0

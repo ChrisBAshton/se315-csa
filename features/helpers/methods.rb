@@ -62,3 +62,9 @@ def expect_in_each_body (message)
     assert page.has_content?(message)
   end
 end
+
+# Credit: Jacob Relkin
+# http://stackoverflow.com/a/4589982
+def is_numeric?(obj) 
+   obj.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
+end

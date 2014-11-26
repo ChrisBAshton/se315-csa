@@ -7,6 +7,7 @@ Done:
 
 Still on my TODO list:
 
-- [ ] SESSION OPTIMISER (INSTEAD OF LOGGING IN MANUALLY IN EACH STEP)
-- [ ] JASMINE TESTS
+- [ ] Test AJAX search using Jasmine
+- [ ] Get latest Tweet after posting, to make sure it actually reaches Twitter
+- [ ] Use the session optimiser from test/controllers/helper.rb for emulating sessions in Cucumber, rather than filling in forms and clicking 'Login'
 - [ ] new.html.erb (and others) still has hardcoded English

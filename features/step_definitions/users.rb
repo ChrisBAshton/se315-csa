@@ -78,9 +78,3 @@ def assert_redirected_to_user_profile
   user_id = uri.split("?")[0]
   assert is_numeric? user_id
 end
-
-# Credit: Jacob Relkin
-# http://stackoverflow.com/a/4589982
-def is_numeric?(obj) 
-   obj.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
-end
