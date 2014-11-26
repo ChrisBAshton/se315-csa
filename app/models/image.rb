@@ -8,4 +8,5 @@ class Image < ActiveRecord::Base
   # fixes "Missing Validation" error
   # http://stackoverflow.com/questions/21897725/papercliperrorsmissingrequiredvalidatorerror-with-rails-4
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  validates_attachment :photo, :presence => true, :size => { :in => 0..500.kilobytes }
 end

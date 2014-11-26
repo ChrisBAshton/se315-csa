@@ -57,7 +57,7 @@ class ProfileTestData
     {
       email:   "bobby@google.com",
       login:   "bobby",
-      picture: "test/assets/images/gif.gif"
+      picture: "test/assets/images/small.gif"
     }
   ]
 
@@ -111,6 +111,9 @@ class ProfileTestData
     },
     {
       picture: "test/assets/images/svg.svg"
+    },
+    {
+      picture: "test/assets/images/large.gif" # bigger than the 500Kb filesize limit
     }
   ]
 

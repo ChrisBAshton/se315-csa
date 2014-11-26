@@ -69,5 +69,5 @@ end
 def validate_save
   uri = URI.parse(current_url)
   assert_equal uri.path, $map.get_url_from("Profile (own)"), "Page didn't save..."
-  assert page.find(".flash_message").has_content?("Account was successfully created")
+  assert page.find(".flash_message").has_content?(I18n.t('users.account-created'))
 end
