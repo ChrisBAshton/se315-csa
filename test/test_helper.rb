@@ -1,9 +1,5 @@
-require 'simplecov'
-SimpleCov.start
-if ENV['CI']=='true'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
+MIN_CODE_COVERAGE = 90
+require_relative '../config/code_cov'
 
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)

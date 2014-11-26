@@ -4,14 +4,6 @@ rvm:
 env:
   - DB=sqlite
 script:
-  - bundle exec rake
-  - mkdir cov
-  - rake test:units
-  - mkdir cov/units
-  - mv coverage cov/units
-  - rake test:functionals
-  - mkdir cov/functionals
-  - mv coverage cov/functionals
-  - cucumber features/
-  - mkdir cov/features
-  - mv coverage cov/features
+  - bundle exec rake test:units
+  - bundle exec rake test:functionals
+  - bundle exec cucumber features/
