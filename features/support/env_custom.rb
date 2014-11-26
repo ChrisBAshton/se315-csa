@@ -7,14 +7,15 @@ require 'simplecov'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist #default driver when you using @javascript tag
 
+# run this once before running any Cucumber tests, to set defaults and clean database
+DatabaseCleaner.strategy = :truncation
+Cucumber::Rails::World.use_transactional_fixtures = false
+DatabaseCleaner.clean
+
 # CLEAN DATABASE IN BETWEEN SCENARIOS
-# Credit mostly to Helen Harman:
-# https://www.facebook.com/Se31520/posts/689637187799632?comment_id=689646561132028&offset=0&total_comments=1
 require 'database_cleaner'
 Before do
-  DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.start
-  DatabaseCleaner.clean
   load Rails.root.join('db/seeds.rb')
 end
 After do |scenario|

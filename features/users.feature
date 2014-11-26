@@ -25,3 +25,16 @@ Feature: Users
   # Scenario: Delete non-existent user
   #   When I attempt to delete a non-existent user
   #   Then I should see an error
+
+  Scenario: Searching the users list on a browser without JavaScript
+    Given I have JavaScript disabled
+    When I attempt to visit the Users list
+    And I search for users
+    Then the I should see the results after submitting my query
+
+  @javascript
+  Scenario: Searching the users list with JavaScript enabled
+    Given I have JavaScript enabled
+    When I attempt to visit the Users list
+    And I search for users
+    Then the I should see the results automatically

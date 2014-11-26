@@ -49,6 +49,27 @@ Then(/^I should succeed in deleting that user$/) do
   assert !page.has_content?($user_to_delete[:email])
 end
 
+Given(/^I have JavaScript (enabled|disabled)$/) do |javascript|
+  if javascript == "enabled"
+    puts "JS :)"
+  else
+    puts "NO JS :("
+  end
+end
+
+And(/^I search for users$/) do
+  page.find('#q').set('cwl31')
+end
+
+Then(/^the I should see the results (automatically|after submitting my query)$/) do |retrieve|
+  if retrieve == "automatically"
+    selector = ".ui-autocomplete"
+  else
+    click_button I18n.t('users.search')
+    selector = ".main-input-area table.sortable"
+  end
+end
+
 def enter_inputs(inputs)
   fill_in('First name', :with => inputs[:firstname])
   fill_in('Surname',    :with => inputs[:surname])
