@@ -12,7 +12,7 @@ When(/^I try to log in with invalid credentials$/) do
 end
 
 Then(/^I should NOT succeed in logging in$/) do
-  expect_in_each_body "Couldn't log you in as"
+  expect_in_each_body I18n.t('sessions.login-failure')
 end
 
 When(/^I try to log in with valid credentials$/) do
@@ -21,11 +21,11 @@ When(/^I try to log in with valid credentials$/) do
 end
 
 Then(/^I should succeed in logging in$/) do
-  expect_in_each_body "Logged in successfully"
+  expect_in_each_body I18n.t('sessions.login-success')
 end
 
 When(/^I try to log out$/) do
-  click_button 'Logout'
+  click_button I18n.t('sessions.logout')
 end
 
 Then(/^I should succeed in logging out$/) do

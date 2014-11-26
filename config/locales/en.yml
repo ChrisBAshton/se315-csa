@@ -4,6 +4,7 @@ en:
     or:                     "or"
     errors:                 "errors"
 
+  feeds:                    "Feeds"
   are-you-sure:             "Are you sure?"
   back:                     "Back"
   destroy:                  "Destroy"
@@ -42,6 +43,7 @@ en:
     forgot-password:        "Forgot password?"
     register:               "Register"
     welcome:                "Welcome"
+    login-please:           "Please Login"
     login:                  "Login"
     logout:                 "Logout"
     password:               "Password"
@@ -79,6 +81,12 @@ en:
     invalid-image:          "Not a valid profile picture. Try a different file format."
 
   broadcasts:
+    title:                  "Broadcast"
+    new:                    "New broadcast"
+    list:                   "Broadcasts"
+    details:                "Broadcast Details"
+    feeds:                  "Feeds broadcast to"
+    date-attempted:         "Date broadcast attempted"
     unable-message:         "Unable to broadcast to one or more feeds"
     saved-but-message:      "Broadcast was successfully saved, but problems broadcasting to one or more feeds"
     saved-message:          "Broadcast was successfully saved and broadcast to all feeds"

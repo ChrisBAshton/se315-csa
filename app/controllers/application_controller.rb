@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         session[:original_uri] = request.fullpath
-        flash[:notice] = 'Please log in'
+        flash[:notice] = I18n.t('sessions.login-please')
         redirect_to new_session_path
       end
       #(Some browsers, notably IE6, send Accept: */* and trigger

@@ -1,9 +1,9 @@
-<h1>New broadcast</h1>
+<h1><%= I18n.t('broadcasts.new') %></h1>
 
 <%= form_for(@broadcast) do |f| %>
     <% if @broadcast.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@broadcast.errors.count, "error") %> prohibited this broadcast from being saved:</h2>
+          <h2><%= pluralize(@broadcast.errors.count, "error") %> <%= I18n.t('misc.errors') %>:</h2>
 
           <ul>
             <% @broadcast.errors.full_messages.each do |msg| %>
@@ -33,8 +33,8 @@
       <br/>
 
       <div id="">
-        <%= f.submit 'Broadcast', confirm: 'Do you really want to broadcast?' %> |
-        <%= link_to 'Back', broadcasts_path(page: @current_page) %>
+        <%= f.submit I18n.t('broadcasts.title'), confirm: 'Do you really want to broadcast?' %> |
+        <%= link_to I18n.t('back'), broadcasts_path(page: @current_page) %>
       </div>
 
     </div>

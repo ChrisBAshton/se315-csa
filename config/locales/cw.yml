@@ -4,6 +4,7 @@ cw:
     or:                     "neu"
     errors:                 "gwallau"
 
+  feeds:                    "Porthi"
   are-you-sure:             "Wyt ti'n swir?"
   back:                     "Yn ôl"
   destroy:                  "Dinistrio"
@@ -42,6 +43,7 @@ cw:
     forgot-password:        "Anghofio cyfrinair?"
     register:               "Gofrestru"
     welcome:                "Croeso"
+    login-please:           "Mewngofnodi os gwelwch yn dda"
     login:                  "Mewngofnodi"
     logout:                 "Allgofnodi"
     password:               "Cyfrinair"
@@ -79,6 +81,12 @@ cw:
     invalid-image:          "Nid yw llun proffil dilys. Rhowch gynnig ar fformat ffeil gwahanol."
 
   broadcasts:
+    title:                  "Darlled"
+    new:                    "Darlledu newydd"
+    list:                   "Darlledu"
+    details:                "Manylion Darlledu"
+    feeds:                  "Bwydo darlledu i"
+    date-attempted:         "Dyddiad darlledu ceisio"
     unable-message:         "Methu ddarlledu i un neu fwy o feeds"
     saved-but-message:      "Roedd Darlledu ei arbed yn llwyddiannus, ond mae problemau darlledu i un neu fwy porthiannau"
     saved-message:          "Roedd Darlledu harbed a darlledu i bob porthiant yn llwyddiannus"

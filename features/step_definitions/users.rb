@@ -5,7 +5,7 @@ $user_to_delete = {
 }
 
 Then(/^I should see a list of users$/) do
-  assert page.has_content?("User accounts")
+  assert page.has_content?(I18n.t('users.accounts'))
   page.assert_selector(".main-input-area table.sortable tbody tr", :count => 6)
 end
 
@@ -24,7 +24,7 @@ Then(/^I should succeed in creating that user$/) do
     enter_inputs inputs
     page.find("form.new_user input[name='commit']").click
     assert_redirected_to_user_profile
-    assert page.has_content?("Account was successfully created")
+    assert page.has_content?(I18n.t('users.account-created'))
   end
 end
 

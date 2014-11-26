@@ -9,3 +9,4 @@ Still on my TODO list:
 
 - [ ] SESSION OPTIMISER (INSTEAD OF LOGGING IN MANUALLY IN EACH STEP)
 - [ ] JASMINE TESTS
+- [ ] new.html.erb (and others) still has hardcoded English

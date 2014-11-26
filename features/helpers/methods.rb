@@ -13,7 +13,7 @@ def login_with_credentials (username, password)
   within("form[action='/session']") do
     fill_in 'login', :with => username
     fill_in 'password', :with => password
-    click_button 'Login'
+    click_button I18n.t('sessions.login')
   end
 end
 
@@ -33,7 +33,7 @@ end
 def assert_profile_error (inputs = false)
   flash_message = page.all('.flash_error .flash_message')
   if (flash_message.count > 0)
-    image_error = flash_message[0].has_content?("Not a valid profile picture. Try a different file format.")
+    image_error = flash_message[0].has_content?(I18n.t('users.invalid-image'))
   end
   other_error = page.has_selector?("#error_explanation")
   assert (image_error || other_error), "Should not be a valid user: " + (inputs ? inputs.to_s : '')
@@ -41,7 +41,7 @@ end
 
 def successfully_reached_page
   no_error_message = !page.has_selector?(".flash_error")
-  no_login_prompt  = !page.has_content?("Please log in")
+  no_login_prompt  = !page.has_content?(I18n.t('sessions.login-please'))
   return no_error_message && no_login_prompt
 end
 

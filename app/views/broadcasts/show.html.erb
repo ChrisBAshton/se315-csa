@@ -1,11 +1,11 @@
-<h1>Broadcast details</h1>
+<h1><%= I18n.t('broadcasts.details') %></h1>
 <p>
-  <b>Date broadcast attempted:</b>
+  <b><%= I18n.t('broadcasts.date-attempted') %>:</b>
   <%= @broadcast.created_at %>
 </p>
 
 <p>
-  <b>Feeds broadcast to:</b>
+  <b><%= I18n.t('broadcasts.feeds') %>:</b>
   <%= display_feeds @broadcast %>
 </p>
 
@@ -15,4 +15,4 @@
 </p>
 
 <br/><br/>
-<%= link_to 'Back', broadcasts_path(page: @current_page) %>
+<%= link_to I18n.t('back'), broadcasts_path(page: @current_page) %>
