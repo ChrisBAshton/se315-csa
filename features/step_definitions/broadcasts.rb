@@ -102,7 +102,7 @@ def write_message(long)
   if (long)
     message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac elit odio. Cras pretium facilisis metus ac imperdiet. Nullam gravida ornare eros ut pulvinar. Phasellus mollis dolor at eros dapibus, vitae posuere mauris rhoncus. Nunc vel orci nisl. Ut quis velit porttitor, molestie mi in, iaculis lacus. Nunc dictum urna sit amet dignissim pellentesque. Nulla pellentesque arcu posuere blandit porttitor. Fusce a laoreet ligula. Quisque a enim ante. Pellentesque porttitor risus vitae neque pretium, tempor maximus leo bibendum. Pellentesque lacinia metus id iaculis iaculis. Curabitur id nibh leo. Duis ipsum lectus, vestibulum a lectus quis, placerat porta lorem. Integer vulputate, odio eu elementum mollis, tortor nibh pulvinar est, eu feugiat velit arcu ut nisl."
   else
-    message = "Ruby Ruby Ruby Ruby: https://www.youtube.com/watch?v=qObzgUfCl28"
+    message = "Travis Tells a Terrific Tweet"
   end
 
   timestamp = Time.now.getutc.to_s

@@ -11,3 +11,6 @@ SimpleCov.start 'rails' do
   add_group 'Mailers', 'app/mailers'
   add_group 'Views', 'app/views'
 end
+
+# Allows CodeCov.io to store the results of the code coverage
+ENV['CODECOV_TOKEN']='4d2c59d8-d7a0-4f30-aae0-4357dac3b199'
