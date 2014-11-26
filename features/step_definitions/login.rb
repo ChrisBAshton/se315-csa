@@ -23,3 +23,11 @@ end
 Then(/^I should succeed in logging in$/) do
   expect_in_each_body "Logged in successfully"
 end
+
+When(/^I try to log out$/) do
+  click_button 'Logout'
+end
+
+Then(/^I should succeed in logging out$/) do
+  assert page.has_selector?("form[action='/session/new']")
+end
