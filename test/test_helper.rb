@@ -1,4 +1,4 @@
-MIN_CODE_COVERAGE = 90
+MIN_CODE_COVERAGE = 60
 require_relative '../config/code_cov'
 
 ENV["RAILS_ENV"] ||= "test"
