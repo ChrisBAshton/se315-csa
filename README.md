@@ -1,34 +1,11 @@
 [![Build Status](https://magnum.travis-ci.com/ChrisBAshton/se315-csa.svg?token=HSfkP4Tffj4JT2ugyno9&branch=master)](https://magnum.travis-ci.com/ChrisBAshton/se315-csa)
 
-== README
+Done:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- [x] Travis integration
+- [x] Code coverage checker
 
-Things you may want to cover:
+Still on my TODO list:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
-CODE COVERAGE
-SESSION OPTIMISER (INSTEAD OF LOGGING IN MANUALLY IN EACH STEP)
-JASMINE TESTS
-TRAVIS CI
+- [ ] SESSION OPTIMISER (INSTEAD OF LOGGING IN MANUALLY IN EACH STEP)
+- [ ] JASMINE TESTS
