@@ -101,9 +101,11 @@ class UsersController < ApplicationController
         format.html { redirect_to(user_url(@user, page: @current_page),
                                   notice: I18n.t('users.account-created')) }
         format.json { render action: 'show', status: :created, location: @user }
-      else
+      elsif @user.errors.count > 0
         format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+      else
+        throw_image_error format
       end
     end
   end
@@ -116,15 +118,18 @@ class UsersController < ApplicationController
     if current_user.id == @user.id || is_admin?
       @image = @user.image
       @service = ImageService.new(@user, @image)
-
       respond_to do |format|
         if @service.update_attributes(user_params, params[:image_file])
           format.html { redirect_to(user_url(@user, page: @current_page),
                                     notice: I18n.t('users.account-created')) }
           format.json { head :no_content }
         else
-          format.html { render action: 'edit' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
+          if @user.errors.count > 0
+            format.html { render action: 'edit' }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+          else
+            throw_image_error format
+          end
         end
       end
     else
@@ -146,6 +151,17 @@ class UsersController < ApplicationController
 # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def throw_image_error(format)
+    format.html {
+      flash[:error] = I18n.t('users.invalid-image')
+      redirect_back_or_default(home_url)
+    }
+    format.json {
+      render json: "{#{message}}",
+             status: :unprocessable_entity
+    }
   end
 
   def set_current_page

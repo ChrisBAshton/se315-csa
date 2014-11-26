@@ -61,7 +61,7 @@ def validate (should_save)
   if (should_save)
     validate_save
   else
-    validate_did_not_save
+    assert_profile_error
   end
 end
 
@@ -69,9 +69,5 @@ end
 def validate_save
   uri = URI.parse(current_url)
   assert_equal uri.path, $map.get_url_from("Profile (own)"), "Page didn't save..."
-end
-
-# if unsuccessful, page won't redirect, error message will be displayed
-def validate_did_not_save
-  assert page.has_selector?("#error_explanation"), "The form data was invalid, but the changes were saved!"
+  assert page.find(".flash_message").has_content?("Account was successfully created")
 end

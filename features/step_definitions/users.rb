@@ -34,7 +34,7 @@ Then(/^I should see an error$/) do
     visit "/users/new"
     enter_inputs inputs
     page.find("form.new_user input[name='commit']").click
-    assert page.has_selector?("#error_explanation"), "Should not be a valid user: " + inputs.to_s
+    assert_profile_error inputs
   end
 end
 
@@ -66,6 +66,10 @@ def enter_inputs(inputs)
     check 'Jobs'
   else
     uncheck 'Jobs'
+  end
+
+  if inputs[:picture]
+    attach_file('image_file', File.expand_path(inputs[:picture]))
   end
 end
 

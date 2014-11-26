@@ -37,7 +37,27 @@ class ProfileTestData
     },
 
     {
+      email:   "tom@google.com",
+      login:   "tom",
       picture: "test/assets/images/profile.jpg"
+    },
+    
+    {
+      email:   "bill@google.com",
+      login:   "bill",
+      picture: "test/assets/images/jpeg.jpeg"
+    },
+    
+    {
+      email:   "ben@google.com",
+      login:   "ben",
+      picture: "test/assets/images/png.png"
+    },
+    
+    {
+      email:   "bobby@google.com",
+      login:   "bobby",
+      picture: "test/assets/images/gif.gif"
     }
   ]
 
@@ -85,6 +105,12 @@ class ProfileTestData
     },
     {
       picture: "test/assets/images/virus.exe"
+    },
+    {
+      picture: "test/assets/images/virus.jpg" # not a valid image file, but does have the jpg extension
+    },
+    {
+      picture: "test/assets/images/svg.svg"
     }
   ]
 

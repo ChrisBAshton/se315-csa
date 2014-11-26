@@ -62,6 +62,7 @@ en:
     account-created:        "Account was successfully created"
     thanks:                 "Thanks for signing up!  We're sending you an email with your activation code"
     insufficient-permissions: "You don't have sufficient permissions to perform that task"
+    invalid-image:          "Not a valid profile picture. Try a different file format."
 
   broadcasts:
     unable-message:         "Unable to broadcast to one or more feeds"

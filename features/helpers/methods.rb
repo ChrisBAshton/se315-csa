@@ -30,6 +30,15 @@ def get_user_id (who)
   return id
 end
 
+def assert_profile_error (inputs = false)
+  flash_message = page.all('.flash_error .flash_message')
+  if (flash_message.count > 0)
+    image_error = flash_message[0].has_content?("Not a valid profile picture. Try a different file format.")
+  end
+  other_error = page.has_selector?("#error_explanation")
+  assert (image_error || other_error), "Should not be a valid user: " + (inputs ? inputs.to_s : '')
+end
+
 def successfully_reached_page
   no_error_message = !page.has_selector?(".flash_error")
   no_login_prompt  = !page.has_content?("Please log in")
