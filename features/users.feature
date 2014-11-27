@@ -30,11 +30,11 @@ Feature: Users
     Given I have JavaScript disabled
     When I attempt to visit the Users list
     And I search for users
-    Then the I should see the results
+    Then I should see the results
 
   @javascript
   Scenario: Searching the users list with JavaScript enabled
     Given I have JavaScript enabled
     When I attempt to visit the Users list
     And I search for users
-    Then the I should see the results
+    Then I should see the results

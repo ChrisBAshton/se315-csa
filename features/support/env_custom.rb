@@ -5,7 +5,8 @@ require 'simplecov'
 # I use Poltergeist because it is headless and a little quicker than selenium. It's also pre-installed on Travis by default.
 # The JavaScript driver is, naturally, much slower than a non JavaScript driver, so I've only used the `@javascript` tag where necessary
 require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist #default driver when you using @javascript tag
+Capybara.javascript_driver = :poltergeist # default driver when you using @javascript tag
+Capybara.default_wait_time = 5            # seconds to wait for AJAX requests to complete
 
 # run this once before running any Cucumber tests, to set defaults and clean database
 DatabaseCleaner.strategy = :truncation
