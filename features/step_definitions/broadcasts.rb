@@ -1,3 +1,5 @@
+require 'json'
+
 Then(/^I should see a list of broadcasts$/) do
   assert page.has_content?(I18n.t('broadcasts.list'))
   page.assert_selector("table.sortable tbody tr", :count => 8)
@@ -30,6 +32,32 @@ end
 Then(/^the broadcast should be sent successfully$/) do
   message = page.find(".flash_message")
   assert message.has_content?(I18n.t('broadcasts.saved-message'))
+
+  if $twitter_broadcast
+    assert_latest_tweet? $broadcast_message
+  end
+end
+
+def assert_latest_tweet?(expected_tweet)
+  retrieved_tweet = false
+  begin
+    response = TWITTER_ACCESS_TOKEN.get('/statuses/user_timeline.json?screen_name=chris_loftus_te&count=1')
+    case response
+      when Net::HTTPSuccess
+        json = JSON.parse(response.body)
+        retrieved_tweet = json[0]["text"]
+      else # Something went wrong
+        result = [feed: 'twitter', code: response.code, message: response.message]
+    end
+  rescue => e
+    result = [feed: 'twitter', code: 500, message: e.message]
+  end
+
+  if retrieved_tweet
+    assert retrieved_tweet == $broadcast_message
+  else
+    raise CouldNotGetTweet, 'Could not get the latest Tweet so could not perform assertion. Details: ' + result.to_s
+  end
 end
 
 Then(/^the broadcast should not send at all$/) do
@@ -49,9 +77,9 @@ end
 
 def send_to_mailing_list (list)
   if list == 'jobs'
-    selector = 'feeds_alumni_email_cs-alumni-jobs'
+    selector = 'feeds_alumni_email_cs-alumni-jobs' # Jobs
   else
-    selector = 'feeds_alumni_email_cs-alumni' # News
+    selector = 'feeds_alumni_email_cs-alumni'      # News
   end
   page.choose(selector)
 end
@@ -91,8 +119,10 @@ def calculate_which_boxes_to_check (feeds)
   
   if feeds == "the Twitter feed"
     checkboxes[:twitter] = true
+    $twitter_broadcast = true
   elsif feeds == "the email feed"
     checkboxes[:email] = true
+    $twitter_broadcast = false
   end
 
   return checkboxes
@@ -108,6 +138,8 @@ def write_message(long)
   timestamp = Time.now.getutc.to_s
 
   message = message + ". (" + timestamp + ")"
+
+  $broadcast_message = message
 
   page.find('#broadcast_content').set(message)
 end

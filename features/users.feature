@@ -21,7 +21,3 @@ Feature: Users
   Scenario: Delete existing user
     When I attempt to delete an existing user
     Then I should succeed in deleting that user
-
-  # Scenario: Delete non-existent user
-  #   When I attempt to delete a non-existent user
-  #   Then I should see an error
