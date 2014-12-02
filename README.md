@@ -12,23 +12,25 @@ As part of the SE31520 "Internet-Based Applications" assignment, I've further de
 
 # To-do List
 
-- [x] Travis integration
-- [x] Code coverage checker
-- [x] Get latest Tweet after posting, to make sure it actually reaches Twitter
 - [ ] Screencast.
-- [x] Test broadcasting a blank message
 - [ ] RSPec tests
-- [ ] Use case diagram, Data flow diagram, revised database/class designs
+- [ ] Data flow diagram, revised database/class designs
 - [ ] Document the updated test architecture (perhaps with diagrams)
 - [ ] Expanded functional tests
 - [ ] Expanded unit tests
-- [ ] Cite an article for using only boundaries for tests
 - [ ] Increased minimum code coverage levels
 - [ ] Refactor of Cucumber tests
 - [ ] Test JavaScript using Jasmine
 - [ ] Testing that no unencrypted password is stored in the database
-- [ ] Implementing an improvement based on the original (overcomplex) class diagram
 - [ ] Making the repo & Travis builds public
 - [ ] new.html.erb (and others) still has hardcoded English
 - [ ] Use the session optimiser from test/controllers/helper.rb for emulating sessions in Cucumber, rather than filling in forms and clicking 'Login'
 - [ ] Wraith? (Screenshot comparison tests) - wow marks
+
+Completed:
+
+- [x] Travis integration
+- [x] Code coverage checker
+- [x] Get latest Tweet after posting, to make sure it actually reaches Twitter
+- [x] Test broadcasting a blank message
+- [x] Use case diagram
