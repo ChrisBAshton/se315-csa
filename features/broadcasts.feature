@@ -43,3 +43,8 @@ Feature: Broadcasts
     When I attempt to visit New broadcast
     When I attempt to send a long broadcast to the Twitter feed
     Then the broadcast should not send to all feeds
+
+  Scenario: Sending an empty broadcast to any feed
+    When I attempt to visit New broadcast
+    When I attempt to send an empty broadcast to a valid feed
+    Then the broadcast should not send at all

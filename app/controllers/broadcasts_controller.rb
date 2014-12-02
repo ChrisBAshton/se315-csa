@@ -88,6 +88,8 @@ class BroadcastsController < ApplicationController
               end
             }
           end
+        else
+          format.html { render :new }
         end
       end
     end

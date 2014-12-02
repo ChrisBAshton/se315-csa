@@ -21,9 +21,8 @@ Then(/^I should be successful in deleting it$/) do
   assert !page.has_selector?("a[data-method='delete'][href='/broadcasts/3?page=1']")
 end
 
-When(/^I attempt to send (a|a long) broadcast to (.+)$/) do |length_of_message, feeds|
-  long_message = (length_of_message == "a long")
-  write_message(long_message)
+When(/^I attempt to send (a|a long|an empty) broadcast to (.+)$/) do |length_of_message, feeds|
+  write_message(length_of_message)
   check_boxes_corresponding_to feeds
   send_to_mailing_list 'jobs'
   click_button I18n.t('broadcasts.title')
@@ -38,31 +37,15 @@ Then(/^the broadcast should be sent successfully$/) do
   end
 end
 
-def assert_latest_tweet?(expected_tweet)
-  retrieved_tweet = false
-  begin
-    response = TWITTER_ACCESS_TOKEN.get('/statuses/user_timeline.json?screen_name=chris_loftus_te&count=1')
-    case response
-      when Net::HTTPSuccess
-        json = JSON.parse(response.body)
-        retrieved_tweet = json[0]["text"]
-      else # Something went wrong
-        result = [feed: 'twitter', code: response.code, message: response.message]
-    end
-  rescue => e
-    result = [feed: 'twitter', code: 500, message: e.message]
-  end
-
-  if retrieved_tweet
-    assert retrieved_tweet == $broadcast_message
-  else
-    raise CouldNotGetTweet, 'Could not get the latest Tweet so could not perform assertion. Details: ' + result.to_s
-  end
-end
-
 Then(/^the broadcast should not send at all$/) do
-  message = page.find(".flash_error .flash_message")
-  assert message.has_content?(I18n.t('broadcasts.no-feeds-selected'))
+  blank = page.has_selector?("#error_explanation")
+  no_feeds = page.has_selector?("flash_error .flash_message")
+  if blank
+    assert page.has_content?("Content can't be blank")
+  else
+    message = page.find(".flash_error .flash_message")
+    assert message.has_content?(I18n.t('broadcasts.no-feeds-selected'))
+  end
 end
 
 Then(/^the broadcast should not send to all feeds$/) do
@@ -117,19 +100,21 @@ def calculate_which_boxes_to_check (feeds)
     twitter:  bool
   }
   
+  $twitter_broadcast = false
   if feeds == "the Twitter feed"
     checkboxes[:twitter] = true
     $twitter_broadcast = true
   elsif feeds == "the email feed"
     checkboxes[:email] = true
-    $twitter_broadcast = false
+  elsif feeds == "a valid feed"
+    checkboxes[:email] = true # can change this for any arbitrary feed
   end
 
   return checkboxes
 end
 
-def write_message(long)
-  if (long)
+def write_message(length_of_message)
+  if length_of_message == "a long"
     message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac elit odio. Cras pretium facilisis metus ac imperdiet. Nullam gravida ornare eros ut pulvinar. Phasellus mollis dolor at eros dapibus, vitae posuere mauris rhoncus. Nunc vel orci nisl. Ut quis velit porttitor, molestie mi in, iaculis lacus. Nunc dictum urna sit amet dignissim pellentesque. Nulla pellentesque arcu posuere blandit porttitor. Fusce a laoreet ligula. Quisque a enim ante. Pellentesque porttitor risus vitae neque pretium, tempor maximus leo bibendum. Pellentesque lacinia metus id iaculis iaculis. Curabitur id nibh leo. Duis ipsum lectus, vestibulum a lectus quis, placerat porta lorem. Integer vulputate, odio eu elementum mollis, tortor nibh pulvinar est, eu feugiat velit arcu ut nisl."
   else
     message = "Travis Tells a Terrific Tweet"
@@ -138,8 +123,34 @@ def write_message(long)
   timestamp = Time.now.getutc.to_s
 
   message = message + ". (" + timestamp + ")"
-
+  
+  if length_of_message == "an empty"
+    message = ""
+  end
+  
   $broadcast_message = message
 
   page.find('#broadcast_content').set(message)
+end
+
+def assert_latest_tweet?(expected_tweet)
+  retrieved_tweet = false
+  begin
+    response = TWITTER_ACCESS_TOKEN.get('/statuses/user_timeline.json?screen_name=chris_loftus_te&count=1')
+    case response
+      when Net::HTTPSuccess
+        json = JSON.parse(response.body)
+        retrieved_tweet = json[0]["text"]
+      else # Something went wrong
+        result = [feed: 'twitter', code: response.code, message: response.message]
+    end
+  rescue => e
+    result = [feed: 'twitter', code: 500, message: e.message]
+  end
+
+  if retrieved_tweet
+    assert retrieved_tweet == $broadcast_message
+  else
+    raise CouldNotGetTweet, 'Could not get the latest Tweet so could not perform assertion. Details: ' + result.to_s
+  end
 end
