@@ -1,5 +1,4 @@
 require 'test_helper'
-require_relative 'helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do

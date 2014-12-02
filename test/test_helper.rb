@@ -16,3 +16,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+def make_admin_session (user)
+    UserDetail.create!(login: 'admin', password: 'taliesin', user: user)
+    user.user_detail = UserDetail.authenticate('admin', 'taliesin')
+    session[:user_id] = user.user_detail
+end

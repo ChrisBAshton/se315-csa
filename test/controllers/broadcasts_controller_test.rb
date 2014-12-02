@@ -1,5 +1,4 @@
 require 'test_helper'
-require_relative 'helper'
 
 class BroadcastsControllerTest < ActionController::TestCase
   setup do
