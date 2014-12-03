@@ -1,7 +1,7 @@
 require 'json'
 
 def check_boxes_corresponding_to (feeds)
-  boxes = calculate_which_boxes_to_check feeds
+  boxes = calculate_which_boxes_to_check(feeds)
   check_the boxes
 end
 
@@ -24,7 +24,7 @@ def check_the (boxes)
   }
 
   boxes.each do |key, check_it|
-    if (check_it)
+    if check_it
       check html_ids[key]
     else
       uncheck html_ids[key]
@@ -54,30 +54,33 @@ def calculate_which_boxes_to_check (feeds)
   elsif feeds == "the email feed"
     checkboxes[:email] = true
   elsif feeds == "a valid feed"
-    checkboxes[:email] = true # can change this for any arbitrary feed
+    # can change ':email' for any arbitrary feed
+    checkboxes[:email] = true
   end
 
   return checkboxes
 end
 
 def write_message(length_of_message)
-  if length_of_message == "a long"
+  $broadcast_message = generate_a_message(length_of_message)
+  page.find('#broadcast_content').set($broadcast_message)
+end
+
+def generate_a_message(length_of_message)
+  if length_of_message == "an empty"
+    message = false
+  elsif length_of_message == "a long"
     message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac elit odio. Cras pretium facilisis metus ac imperdiet. Nullam gravida ornare eros ut pulvinar. Phasellus mollis dolor at eros dapibus, vitae posuere mauris rhoncus. Nunc vel orci nisl. Ut quis velit porttitor, molestie mi in, iaculis lacus. Nunc dictum urna sit amet dignissim pellentesque. Nulla pellentesque arcu posuere blandit porttitor. Fusce a laoreet ligula. Quisque a enim ante. Pellentesque porttitor risus vitae neque pretium, tempor maximus leo bibendum. Pellentesque lacinia metus id iaculis iaculis. Curabitur id nibh leo. Duis ipsum lectus, vestibulum a lectus quis, placerat porta lorem. Integer vulputate, odio eu elementum mollis, tortor nibh pulvinar est, eu feugiat velit arcu ut nisl."
   else
     message = "Travis Tells a Terrific Tweet"
   end
+  return cache_bust(message)
+end
 
-  timestamp = Time.now.getutc.to_s
-
-  message = message + ". (" + timestamp + ")"
-  
-  if length_of_message == "an empty"
-    message = ""
-  end
-  
-  $broadcast_message = message
-
-  page.find('#broadcast_content').set(message)
+def cache_bust(message)
+  # have to ensure the tweet is unique otherwise Twitter may block it from coming through
+  cache_bust_string = ". (" + Time.now.getutc.to_s + ")"
+  return message ? (message + cache_bust_string) : ""
 end
 
 def assert_latest_tweet?(expected_tweet)

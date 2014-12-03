@@ -27,6 +27,7 @@ Feature: Users Search
 
     Examples:
       | search_term | checkboxes                                  | expected_results |
+      # more values than the non-JS equivalent, which is limited to 6 items being returned to the table
       | cwl1        | firstname, surname, grad_year, phone, email | cwl1, cwl10, cwl11, cwl12, cwl13, cwl14, cwl15, cwl16, cwl17, cwl18, cwl19|
       | cwl12       | firstname, surname, grad_year, phone, email | cwl12 |
       | Loftus      | surname                                     | cwl   |
