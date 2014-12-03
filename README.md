@@ -61,11 +61,9 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 - [ ] Screencast.
 - [ ] Data flow diagram, revised database/class designs
-- [ ] Document the updated test architecture (perhaps with diagrams)
 - [ ] Expanded functional tests
 - [ ] Expanded unit tests
 - [ ] Increased minimum code coverage levels
-- [ ] Refactor of Cucumber tests
 - [ ] Test JavaScript using Jasmine
 - [ ] Testing that no unencrypted password is stored in the database
 - [ ] Making the repo & Travis builds public
@@ -80,3 +78,5 @@ Completed:
 - [x] Get latest Tweet after posting, to make sure it actually reaches Twitter
 - [x] Test broadcasting a blank message
 - [x] Use case diagram
+- [x] Document the updated test architecture (perhaps with diagrams)
+- [x] Refactor of Cucumber tests
