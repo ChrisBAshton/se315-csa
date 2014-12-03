@@ -59,7 +59,6 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 # To-do List
 
-- [ ] Screencast.
 - [ ] Data flow diagram, revised database/class designs
 - [ ] Expanded functional tests
 - [ ] Expanded unit tests
@@ -73,6 +72,7 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 Completed:
 
+- [x] Screencast.
 - [x] Travis integration
 - [x] Code coverage checker
 - [x] Get latest Tweet after posting, to make sure it actually reaches Twitter
