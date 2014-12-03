@@ -19,8 +19,3 @@ Then(/^I should see an error message$/) do
   message = page.find('.flash_notice .flash_message')
   assert message.has_content?("swahili translation not available")
 end
-
-def visit_home
-  $map.clean_slate
-  visit $map.get_url_from('Home')
-end
