@@ -2,7 +2,7 @@
 
 # CS-Alumni Application
 
-This is a Ruby on Rails application for Aberystwyth Computer Science Alumni, originally designed and written by Chris Loftus (encapsulated in the [first commit](https://github.com/ChrisBAshton/se315-csa/commit/d8663a96d59351f3598384069411a26e9fdcf864). Subsequent commits are my own work.
+This is a Ruby on Rails application for Aberystwyth Computer Science Alumni, originally designed and written by Chris Loftus (encapsulated in the [first commit](https://github.com/ChrisBAshton/se315-csa/commit/d8663a96d59351f3598384069411a26e9fdcf864)). Subsequent commits are my own work.
 
 As part of the SE31520 "Internet-Based Applications" assignment, I've further developed this existing project by:
 
@@ -33,9 +33,9 @@ Now you can go to http://localhost:3000/ to view the CSA project.
 
 My enhancements to the project include a comprehensive testing suite. You can validate the integrity of your project build by running:
 
-`rake test:units` - to run the unit tests.
-`rake test:functionals` - to run the functional tests.
-`cucumber features` - to run the Cucumber tests.
+* `rake test:units` - to run the unit tests.
+* `rake test:functionals` - to run the functional tests.
+* `cucumber features` - to run the Cucumber tests.
 
 Or, if you're feeling lazy:
 
@@ -47,14 +47,15 @@ You've downloaded and installed the CSA project and now you want to add some add
 
 Ideally, you should develop your enhancement in a test-driven way. Follow these steps:
 
-* Before you do anything, make sure the existing tests pass (see "Testing the application").
+* Before you do anything, make sure the existing tests pass (see [Testing the application](https://github.com/ChrisBAshton/se315-csa#testing-the-application)).
 * Write a Cucumber feature describing your new functionality.
-* Develop your new functionality incrementally using low-level unit tests (see `/test/models/user_test.rb` as an example).
-* If your functionality can be called RESTfully, write some functional tests (see `/test/controllers/users_controller_test.rb` as an example).
+* Develop your new functionality incrementally using low-level unit tests (see `/test/models/user_test.rb` for an example).
+* If your functionality can be called RESTfully, write some functional tests (see `/test/controllers/users_controller_test.rb` for an example).
 * Finally, write the step definitions for your Cucumber feature.
 * Make sure all tests pass.
 * Push to Git. You may then want to open a Pull Request to merge with my repository.
-* Travis CI will automatically test merging the repositories and try running the new build. If the imaginary build passes, I'd be in a position to hit the "Merge" button. Congratulations, you've just contributed to CSA!
+* Travis CI will automatically test merging the repositories and try running the new build. If the imaginary build passes, I'll be in a position to hit the "Merge" button.
+* Congratulations, you've just contributed to CSA!
 
 # To-do List
 
