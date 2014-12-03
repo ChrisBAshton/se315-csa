@@ -1,0 +1,13 @@
+# Wherever a test requires creating a user or editing a user attribute,
+# the base user options can be used as default values.
+base:
+  firstname:     "Evangeline"
+  surname:       "Ashton"
+  email:         "cba1@aber.ac.uk"
+  phone:         ""
+  grad_year:     "1984"
+  jobs:          false
+  login:         "cba1"
+  password:      "test"
+  password_conf: "test"
+  picture:       false

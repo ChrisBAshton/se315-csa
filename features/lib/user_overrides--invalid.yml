@@ -1,0 +1,54 @@
+# Wherever a test edits/creates users and wants to use INVALID attributes, these attributes can be used.
+# These attributes inherit from the base user (user_base.yml) and only override the base user in the specified attributes.
+
+one:
+  firstname: ""
+
+two:
+  firstname: "&;DROP"
+
+three:
+  surname: ""
+
+four:
+  surname: "&;DROP"
+
+five:
+  grad_year: "2020" # invalid as grad year is in the future
+
+six:
+  grad_year: "1682" # too far in the past (before Aberystwyth was even founded!)
+
+seven:
+  phone: "01234"
+
+eight:
+  email: "cwl@aber.ac.uk" # invalid as it would be a duplicate entry in the database"
+
+nine:
+  email: "test@aber"
+
+ten:
+  email: "cwl2000@aber.ac@.uk"
+
+eleven:
+  password:      "test"
+  password_conf: "test2" # invalid - the password and confirmation should match
+
+twelve:
+  phone: "01970 42224"   # missing one digit
+
+thirteen:
+  phone: "+447843281733" # valid in some applications, but we've made a business decision that ours should disclude such phone numbers for the sake of data integrity
+
+fourteen:
+  picture: "test/assets/images/virus.exe"
+
+fifteen:
+  picture: "test/assets/images/virus.jpg" # not a valid image file, but does have the jpg extension
+
+sixteen:
+  picture: "test/assets/images/svg.svg"
+
+seventeen:
+  picture: "test/assets/images/large.gif" # bigger than the 500Kb filesize limit

@@ -18,15 +18,15 @@ Feature: Sending new Broadcasts
 
   Scenario: Sending a broadcast to no feeds
     When I attempt to visit New broadcast
-    When I attempt to send a broadcast to no feeds
+    And I attempt to send a broadcast to no feeds
     Then the broadcast should not send at all
 
   Scenario: Sending a long broadcast to the Twitter feed
     When I attempt to visit New broadcast
-    When I attempt to send a long broadcast to the Twitter feed
+    And I attempt to send a long broadcast to the Twitter feed
     Then the broadcast should not send to all feeds
 
   Scenario: Sending an empty broadcast to any feed
     When I attempt to visit New broadcast
-    When I attempt to send an empty broadcast to a valid feed
+    And I attempt to send an empty broadcast to a valid feed
     Then the broadcast should not send at all

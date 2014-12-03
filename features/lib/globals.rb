@@ -4,4 +4,3 @@
 
 $userID = false         # overriden when calling the login_user/login_admin methods
 $map    = UrlMapper.new # maps page titles to urls. Also takes into account current user id
-$bodies # used in methods.rb
