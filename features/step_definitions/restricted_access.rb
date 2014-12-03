@@ -1,29 +1,25 @@
 Then(/^I should be able to access: (.+)$/) do |pages|
   $map.clean_slate()
-  pages.split(", ").each do |page_title|
-    url = $map.get_url_from(page_title)
-    visit url
-    assert successfully_reached_page, "Should have successfully reached " + url
+
+  if pages == "every page"
+    pages = $map.get_all_page_names
+  else
+    pages = pages.split(", ")
   end
+
+  assert_can_visit_all pages
 end
 
 And(/^I should not have access to any other pages$/) do
   $map.get_restricted_pages.each do |url_of_restricted_page|
+    puts "I should not be able to access: " + url_of_restricted_page
     visit url_of_restricted_page
     assert failed_to_reach_page, "Should not have been able to access " + url_of_restricted_page
-  end
-end
-
-Then(/^I should be able to access every page$/) do
-  $map.clean_slate()
-  $map.get_all_pages.each do |url|
-    visit url
-    assert successfully_reached_page, "Should have successfully reached " + url
+    puts "...and indeed I cannot."
   end
 end
 
 When(/^I attempt to visit (.+)$/) do |page_description|
-  $map.clean_slate
   url = $map.get_url_from(page_description)
   visit url
 end
@@ -34,7 +30,7 @@ Then(/^I should be redirected to (.+)$/) do |different_page|
 end
 
 Then(/^I should be blocked from seeing the content$/) do
-    assert failed_to_reach_page, "Should not have reached page"
+  assert failed_to_reach_page, "Should not have reached page"
 end
 
 Then(/^I should successfully see the 'Profile' page$/) do

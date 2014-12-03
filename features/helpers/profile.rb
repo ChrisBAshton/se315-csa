@@ -9,7 +9,6 @@ def attempt_to_edit (field, value, should_save)
 end
 
 def visit_edit_profile
-  $map.clean_slate
   visit $map.get_url_from("Edit Profile (own)")
 end
 

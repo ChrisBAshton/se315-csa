@@ -20,13 +20,17 @@ class UrlMapper
     @pages_accessed = []
   end
 
-  def get_url_from(page_title)
-    @pages_accessed.push(page_title)
+  def get_url_from(page_title, options = {})
+    if options[:track_pages_visited]
+      @pages_accessed.push(page_title)
+    else
+      clean_slate
+    end
     return @pages.fetch(page_title)
   end
 
-  def get_all_pages
-    return @pages.values
+  def get_all_page_names
+    return @pages.keys
   end
 
   def get_restricted_pages

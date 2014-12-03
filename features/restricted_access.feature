@@ -16,7 +16,7 @@ Feature: Restricting access to specific pages for certain user types
   
   Scenario: Administrator access levels
     Given I am an admin
-    Then I should be able to access every page
+    Then I should be able to access: every page
 
   Scenario: Attempting to view non-existent profiles should redirect to users page
     Given I am an admin
