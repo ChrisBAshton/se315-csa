@@ -10,10 +10,55 @@ As part of the SE31520 "Internet-Based Applications" assignment, I've further de
 * Fixing existing functional and unit tests
 * Fixing broken functionality as a consequence of writing these tests
 
+# Installation
+
+## Pre-requisites
+
+* Ruby v2.2.1 or above
+* Rails v4.1.5 or above
+* Homebrew
+* ImageMagick
+
+## Performing the installation
+
+Fork the repository, then `cd` into the directory containing this README.
+
+* `bundle install` - to install the required Gems
+* `rake db:migrate` - to create the database
+* `rails s` - to fire up the Rails server
+
+Now you can go to http://localhost:3000/ to view the CSA project.
+
+# Testing the application
+
+My enhancements to the project include a comprehensive testing suite. You can validate the integrity of your project build by running:
+
+`rake test:units` - to run the unit tests.
+`rake test:functionals` - to run the functional tests.
+`cucumber features` - to run the Cucumber tests.
+
+Or, if you're feeling lazy:
+
+`rake` - to run all the tests.
+
+# Contributing to CSA
+
+You've downloaded and installed the CSA project and now you want to add some additional functionality. Great stuff!
+
+Ideally, you should develop your enhancement in a test-driven way. Follow these steps:
+
+* Before you do anything, make sure the existing tests pass (see "Testing the application").
+* Write a Cucumber feature describing your new functionality.
+* Develop your new functionality incrementally using low-level unit tests (see `/test/models/user_test.rb` as an example).
+* If your functionality can be called RESTfully, write some functional tests (see `/test/controllers/users_controller_test.rb` as an example).
+* Finally, write the step definitions for your Cucumber feature.
+* Make sure all tests pass.
+* Push to Git. You may then want to open a Pull Request to merge with my repository.
+* Travis CI will automatically test merging the repositories and try running the new build. If the imaginary build passes, I'd be in a position to hit the "Merge" button. Congratulations, you've just contributed to CSA!
+
 # To-do List
 
 - [ ] Screencast.
-- [ ] RSPec tests
 - [ ] Data flow diagram, revised database/class designs
 - [ ] Document the updated test architecture (perhaps with diagrams)
 - [ ] Expanded functional tests

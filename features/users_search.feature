@@ -1,4 +1,4 @@
-Feature: Users
+Feature: Users Search
     Admins can see a list of users.
     They're able to search using different terms and specifying different fields.
 
