@@ -7,26 +7,35 @@ one:
 two:
   firstname: "&;DROP"
 
+twob:
+  firstname: "cba1@aber.ac.uk"
+
 three:
-  surname: ""
+  surname:   ""
 
 four:
   surname: "&;DROP"
 
+fourb:
+  surname: "cba1@aber.ac.uk"
+
 five:
-  grad_year: "2020" # invalid as grad year is in the future
+  grad_year: "2016" # invalid as grad year is in the future
 
 six:
   grad_year: "1682" # too far in the past (before Aberystwyth was even founded!)
 
-seven:
-  phone: "01234"
+sixb:
+  grad_year: "wibble1"
+
+sixb:
+  grad_year: ""
 
 eight:
-  email: "cwl@aber.ac.uk" # invalid as it would be a duplicate entry in the database"
+  email: "cwl@aber.ac.uk" # invalid as it would be a duplicate entry in the database
 
 nine:
-  email: "test@aber"
+  email: "test1test"
 
 ten:
   email: "cwl2000@aber.ac@.uk"
@@ -35,8 +44,14 @@ eleven:
   password:      "test"
   password_conf: "test2" # invalid - the password and confirmation should match
 
+seven:
+  phone: "0197042224"   # missing one digit
+
 twelve:
-  phone: "01970 42224"   # missing one digit
+  phone: "01970 222888"  # no spaces allowed
+
+twelveb:
+  phone: "wibble1"
 
 thirteen:
   phone: "+447843281733" # valid in some applications, but we've made a business decision that ours should disclude such phone numbers for the sake of data integrity

@@ -63,6 +63,7 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 - [ ] Expanded functional tests
 - [ ] Expanded unit tests
 - [ ] Increased minimum code coverage levels
+- [ ] Remove deprecation messages
 - [ ] Test JavaScript using Jasmine
 - [ ] Testing that no unencrypted password is stored in the database
 - [ ] Making the repo & Travis builds public
