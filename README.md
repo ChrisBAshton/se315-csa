@@ -61,10 +61,7 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 - [ ] Making the repo & Travis builds public
 - [ ] Expanded functional tests
-- [ ] Expanded unit tests
-- [ ] Increased minimum code coverage levels
 - [ ] Test JavaScript using Jasmine
-- [ ] new.html.erb (and others) still has hardcoded English
 - [ ] Wraith? (Screenshot comparison tests) - wow marks
 
 Completed:
@@ -77,3 +74,5 @@ Completed:
 - [x] Use case diagram
 - [x] Document the updated test architecture (perhaps with diagrams)
 - [x] Refactor of Cucumber tests
+- [x] Expanded unit tests
+- [x] All views internationalised
