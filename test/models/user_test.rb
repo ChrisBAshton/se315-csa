@@ -34,8 +34,6 @@ class UserTest < ActiveSupport::TestCase
     assert user.valid?
   end
 
-  # Try writing some tests to check that the email is formatted correctly
-
   test "unique email" do
     user = User.new(firstname: users(:one).firstname,
                     surname:   users(:one).surname,
@@ -62,6 +60,29 @@ class UserTest < ActiveSupport::TestCase
     assert !user.valid?
 
     user.email = 'bob@bob@bob.com'
+    assert !user.valid?
+  end
+
+  test "valid phone" do 
+    user = User.new(firstname: users(:one).firstname,
+                    surname:   users(:one).surname,
+                    grad_year: users(:one).grad_year,
+                    email:     "test@test.com")
+    assert user.valid?
+
+    user.phone = ""
+    assert user.valid?
+
+    user.phone = "01970222999"
+    assert user.valid?
+
+    user.phone = "+4487234567"
+    assert !user.valid?
+
+    user.phone = "01999 222 222"
+    assert !user.valid?
+
+    user.phone = "0158823142" # 1 digit short
     assert !user.valid?
   end
 end
