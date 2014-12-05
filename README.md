@@ -59,7 +59,6 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 # To-do List
 
-- [ ] Data flow diagram, revised database/class designs
 - [ ] Expanded functional tests
 - [ ] Expanded unit tests
 - [ ] Increased minimum code coverage levels
