@@ -36,10 +36,8 @@ My enhancements to the project include a comprehensive testing suite. You can va
 * `rake test:units` - to run the unit tests.
 * `rake test:functionals` - to run the functional tests.
 * `cucumber features` - to run the Cucumber tests.
-
-Or, if you're feeling lazy:
-
-`rake` - to run all the tests.
+* `rake jasmine` - then go to http://localhost:8888/ and see the JavaScript unit tests running.
+* `rake jasmine:ci` - currently *fails*. I had real difficulty getting the PhantomJS driver to work correctly. Running the test in browser (above) works fine, but running the tests in the terminal fails. For this reason, Jasmine tests aren't ran in the Continuous Integration system.
 
 # Contributing to CSA
 
@@ -60,8 +58,6 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 # To-do List
 
 - [ ] Making the repo & Travis builds public
-- [ ] Expanded functional tests
-- [ ] Test JavaScript using Jasmine
 - [ ] Wraith? (Screenshot comparison tests) - wow marks
 
 Completed:
@@ -76,3 +72,5 @@ Completed:
 - [x] Refactor of Cucumber tests
 - [x] Expanded unit tests
 - [x] All views internationalised
+- [x] Expanded functional tests
+- [x] Test JavaScript using Jasmine

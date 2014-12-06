@@ -5,9 +5,9 @@ env:
   - DB=sqlite
 script:
   - RAILS_ENV=test
-  - bundle exec rake
+  #- bundle exec rake
   # If I want to be specific, I can uncomment these. However, the default `bundle exec rake` command runs all of these, and has the added bonus of combining the code coverage scores.
-  # - bundle exec rake db:migrate
-  # - bundle exec rake test:units
-  # - bundle exec rake test:functionals
-  # - bundle exec cucumber features/
+  - bundle exec rake db:migrate
+  - bundle exec rake test:units
+  - bundle exec rake test:functionals
+  - bundle exec cucumber features/
