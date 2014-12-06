@@ -8,28 +8,32 @@ var END_COLOUR = 'F61F02';
 
 var twitterCharEffect = true;
 
+var Broadcast = {
+    init: function () {
+       $(BROADCAST_AREA_ID).keyup(function (event) {
+            if (!twitterCharEffect) {
+                colourAlerter(event.target, 'background', START_COLOUR,
+                    START_COLOUR, TWITTER_MESSAGE_LIMIT, 0);
+            }
+            else{
+                twitterCharCountEffect(event.target);
+            }
+        });
+
+        $(TWITTER_FEEDS_ID).click(function (event) {
+            $(SHORTEN_URL_ID).toggle();
+            $(TWITTER_COUNTER_ID).toggle();
+            twitterCharEffect = !twitterCharEffect;
+        });
+
+        // Trigger the keyup in order to initialise twitterCharCountEffect
+        $(BROADCAST_AREA_ID).trigger('keyup');     
+    }
+};
+
 //$(window).load(function () {
 $(document).on('ready page:change', function () {
-
-    $(BROADCAST_AREA_ID).keyup(function (event) {
-        if (!twitterCharEffect) {
-            colourAlerter(event.target, 'background', START_COLOUR,
-                START_COLOUR, TWITTER_MESSAGE_LIMIT, 0);
-        }
-        else{
-            twitterCharCountEffect(event.target);
-        }
-    });
-
-    $(TWITTER_FEEDS_ID).click(function (event) {
-        $(SHORTEN_URL_ID).toggle();
-        $(TWITTER_COUNTER_ID).toggle();
-        twitterCharEffect = !twitterCharEffect;
-    });
-
-    // Trigger the keyup in order to initialise twitterCharCountEffect
-    $(BROADCAST_AREA_ID).trigger('keyup');
-
+    Broadcast.init();
 });
 
 

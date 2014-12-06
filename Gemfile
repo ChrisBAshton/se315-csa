@@ -71,3 +71,7 @@ gem 'poltergeist'
 
 # check code coverage
 gem 'codecov', :require => false, :group => :test
+
+group :development, :test do
+  gem "jasmine"
+end
