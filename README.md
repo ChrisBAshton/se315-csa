@@ -57,7 +57,6 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 # To-do List
 
-- [ ] Making the repo & Travis builds public
 - [ ] Wraith? (Screenshot comparison tests) - wow marks
 
 Completed:
@@ -74,3 +73,4 @@ Completed:
 - [x] All views internationalised
 - [x] Expanded functional tests
 - [x] Test JavaScript using Jasmine
+- [x] Making the repo & Travis builds public
