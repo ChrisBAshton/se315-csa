@@ -1,8 +1,4 @@
-Public build: [![Build Status](https://travis-ci.org/ChrisBAshton/se315-csa.svg?branch=master)](https://travis-ci.org/ChrisBAshton/se315-csa)
-
-Private build: [![Build Status](https://magnum.travis-ci.com/ChrisBAshton/se315-csa.svg?token=HSfkP4Tffj4JT2ugyno9&branch=master)](https://magnum.travis-ci.com/ChrisBAshton/se315-csa)
-
-(I think Travis VM setup differs between public and private builds.)
+[![Build Status](https://travis-ci.org/ChrisBAshton/se315-csa.svg?branch=master)](https://travis-ci.org/ChrisBAshton/se315-csa)
 
 # CS-Alumni Application
 
@@ -61,9 +57,9 @@ Ideally, you should develop your enhancement in a test-driven way. Follow these 
 
 # To-do List
 
-- [ ] Wraith? (Screenshot comparison tests) - wow marks
+- [ ] Wraith? (Screenshot comparison tests)
 
-Completed:
+## Completed:
 
 - [x] Screencast.
 - [x] Travis integration
