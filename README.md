@@ -1,4 +1,8 @@
-[![Build Status](https://magnum.travis-ci.com/ChrisBAshton/se315-csa.svg?token=HSfkP4Tffj4JT2ugyno9&branch=master)](https://magnum.travis-ci.com/ChrisBAshton/se315-csa)
+Public build: [![Build Status](https://travis-ci.org/ChrisBAshton/se315-csa.svg?branch=master)](https://travis-ci.org/ChrisBAshton/se315-csa)
+
+Private build: [![Build Status](https://magnum.travis-ci.com/ChrisBAshton/se315-csa.svg?token=HSfkP4Tffj4JT2ugyno9&branch=master)](https://magnum.travis-ci.com/ChrisBAshton/se315-csa)
+
+(I think Travis VM setup differs between public and private builds.)
 
 # CS-Alumni Application
 
